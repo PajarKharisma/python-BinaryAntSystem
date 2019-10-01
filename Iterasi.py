@@ -99,7 +99,7 @@ class Iterasi:
             wib = 0
             wrb = 1
             wgb = 0
-        elif cf >= 0.8 and cf < 0.85:
+        elif cf >= 0.8 and cf < 0.83:
             wib = 0
             wrb = 0
             wgb = 1
@@ -135,12 +135,29 @@ class Iterasi:
                 sib.append(0)
         self.__sgb = sib[:]
 
+        sgb = None
         if isInit:
             srb = [0] * self.__ndata
             sgb = sib[:]
         else:
             srb = srbVal[:]
             sgb = sgbVal[:]
+
+        sibVal = False
+        sgbVal = False
+        # print('sib : ', sib)
+        # print('srb : ', srb)
+        # print('sgb : ', sgb)
+        if sib == sgb:
+            sibVal = True
+            sgbVal = True
+            # print('masuk kondisi 1')
+        if sib == srb:
+            sibVal = True
+            # print('masuk kondisi 2')
+        if restart and sgb == srb:
+            sgbVal = True
+            # print('masuk kondisi 3')
 
         for i in range(self.__ndata):
             sib[i] *= wib
@@ -163,8 +180,8 @@ class Iterasi:
             tj12.append(val)
 
         cfUpdate = self.calculateCF(tj02, tj12)
-        
-        return cf, cfUpdate, tj02, tj12, restart
+
+        return cf, cfUpdate, tj02, tj12, restart, sibVal, sgbVal
 
     def printKnapsacks(self):
         print('-'*60)

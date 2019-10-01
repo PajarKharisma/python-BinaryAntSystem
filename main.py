@@ -23,7 +23,7 @@ for index, i in enumerate(dataKnapsack):
     knapsacks.append(Knapsack(i[0], i[1]))
 
 ndata = len(barangs)
-iterasiMax = 10
+iterasiMax = 20
 evaporasi = 0.25
 pheromone = 0.5
 tj0 = [pheromone] * ndata
@@ -36,13 +36,13 @@ srb = [0] * ndata
 sgb = [0] * ndata
 
 for i in range(iterasiMax):
-    print('-'*60)
+    print('-'*90)
     print('Itearasi : ', (i+1))
     barang = barangs[:]
     knapsack = knapsacks[:]
     iterasi[i] = Iterasi(barang, knapsack, evaporasi)
     # iterasi[i].testing()
-    cf, nextCf, tj0, tj1, restart = iterasi[i].pheromoneUpdate(tj0, tj1, isInit, sgb, srb)
+    cf, nextCf, tj0, tj1, restart, sibVal, sgbVal = iterasi[i].pheromoneUpdate(tj0, tj1, isInit, sgb, srb)
     cf = float("%.2f" % round(cf, 2))
     isInit = False
     
@@ -60,9 +60,11 @@ for i in range(iterasiMax):
     del barang[:]
     del knapsack[:]
     print('Iterasi ', (i + 1), end=' | ')
-    print('cf : %s' % (cf), end=' \n ')
-    # print('Profit : %s' % (iterasi[i].getProfit()))
-    print('-' * 50)
+    print('cf : %s' % (cf), end=' | ')
+    print('Restart : %s' % (restart), end=' | ')
+    print('sib : %s' % (sibVal), end=' | ')
+    print('sgb : %s' % (sgbVal), end='\n')
+    print('-' * 90)
 
-for i in globalHst:
-    print(i.getSgb(), ' | ', i.getProfit())
+# for i in globalHst:
+#     print(i.getSgb(), ' | ', i.getProfit())
