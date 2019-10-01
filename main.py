@@ -59,7 +59,7 @@ for i in range(iterasiMax):
 
     del barang[:]
     del knapsack[:]
-    print('Iterasi ', (i + 1), end=' | ')
+    print()
     print('cf : %s' % (cf), end=' | ')
     print('Restart : %s' % (restart), end=' | ')
     print('sib : %s' % (sibVal), end=' | ')

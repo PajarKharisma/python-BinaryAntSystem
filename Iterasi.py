@@ -119,10 +119,15 @@ class Iterasi:
         self.barangSort()
         self.randomValue()
         self.randomSolution()
+        print('-'*30)
+        print('Hasil acak : ')
+        self.printKnapsacks()
         self.dropPhase()
         self.getFreeItems()
         self.addPhase()
-        # self.printKnapsacks()
+        print('-'*30)
+        print('Hasil akhir : ')
+        self.printKnapsacks()
 
         cf = self.calculateCF(tj01, tj11)
         wib, wrb, wgb, restart = self.getW(cf)
@@ -145,19 +150,13 @@ class Iterasi:
 
         sibVal = False
         sgbVal = False
-        # print('sib : ', sib)
-        # print('srb : ', srb)
-        # print('sgb : ', sgb)
         if sib == sgb:
             sibVal = True
             sgbVal = True
-            # print('masuk kondisi 1')
         if sib == srb:
             sibVal = True
-            # print('masuk kondisi 2')
         if restart and sgb == srb:
             sgbVal = True
-            # print('masuk kondisi 3')
 
         for i in range(self.__ndata):
             sib[i] *= wib
@@ -180,14 +179,20 @@ class Iterasi:
             tj12.append(val)
 
         cfUpdate = self.calculateCF(tj02, tj12)
-
         return cf, cfUpdate, tj02, tj12, restart, sibVal, sgbVal
 
     def printKnapsacks(self):
         print('-'*60)
+        totalBobot = 0
+        totalProfit = 0
         for knap in self.__knapsacks:
             for i in knap.getBarang():
                 print(i.getName(), end=' ')
                 print('dengan bobot\t: ', i.getBobot())
-            print('total bobot : ', knap.getBobotBarang())
+            totalBobot += knap.getBobotBarang()
+            totalProfit += knap.getProfitBarang()
+            print('TOTAL BOBOT : ', knap.getBobotBarang())
+            print('TOTAL PROFIT : ', knap.getProfitBarang())
             print()
+        print('Total semua Bobot : ', totalBobot)
+        print('Total semua Profit : ', totalProfit)

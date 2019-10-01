@@ -44,6 +44,12 @@ class Knapsack:
     def getBarang(self):
         return self.__barang
     
+    def getProfitBarang(self):
+        total = 0
+        for i in self.__barang:
+            total += i.getProfit() 
+        return total
+
     def getBobotBarang(self):
         total = 0
         for i in self.__barang:
