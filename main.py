@@ -47,7 +47,8 @@ for i in range(iterasiMax):
     isInit = False
     
     sgb, profit = iterasi[i].getProfit()
-    log = GlobalLog(sgb, profit)
+    namaIterasi = 'Iterasi %s' % (i + 1)
+    log = GlobalLog(sgb, profit, namaIterasi)
     globalHst.append(log)
     globalHst.sort(key=lambda x: x.getProfit(), reverse=True)
     sgb = globalHst[0].getSgb()[:]
@@ -66,5 +67,5 @@ for i in range(iterasiMax):
     print('sgb : %s' % (sgbVal), end='\n')
     print('-' * 90)
 
-# for i in globalHst:
-#     print(i.getSgb(), ' | ', i.getProfit())
+for i in globalHst:
+    print(i.getSgb(), ' | ', i.getProfit(), ' | ', i.getIterasi())
