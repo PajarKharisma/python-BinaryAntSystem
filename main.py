@@ -66,6 +66,8 @@ for i in range(iterasiMax):
     print('sib : %s' % (sibVal), end=' | ')
     print('sgb : %s' % (sgbVal), end='\n')
     print('-' * 90)
+    if restart == sgbVal == sibVal == True:
+        break
 
 for i in globalHst:
     print(i.getSgb(), ' | ', i.getProfit(), ' | ', i.getIterasi())
