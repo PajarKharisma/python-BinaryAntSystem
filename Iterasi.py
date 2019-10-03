@@ -38,6 +38,7 @@ class Iterasi:
     
     def dropPhase(self):
         for knap in self.__knapsacks:
+            knap.sortBarang()
             while(knap.getKapasitas() < knap.getBobotBarang()):
                 knap.drop()
 
@@ -191,8 +192,9 @@ class Iterasi:
                 print('dengan bobot\t: ', i.getBobot())
             totalBobot += knap.getBobotBarang()
             totalProfit += knap.getProfitBarang()
-            print('TOTAL BOBOT : ', knap.getBobotBarang())
-            print('TOTAL PROFIT : ', knap.getProfitBarang())
+            
+            print('TOTAL BOBOT : ', float("%.2f" % round(knap.getBobotBarang(), 2)))
+            print('TOTAL PROFIT : ', float("%.2f" % round(knap.getProfitBarang(), 2)))
             print()
-        print('Total semua Bobot : ', totalBobot)
-        print('Total semua Profit : ', totalProfit)
+        print('Total semua Bobot : ', float("%.2f" % round(totalBobot, 2)))
+        print('Total semua Profit : ', float("%.2f" % round(totalProfit, 2)))

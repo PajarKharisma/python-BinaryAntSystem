@@ -38,6 +38,9 @@ class Knapsack:
     def add(self, barang):
         self.__barang.append(barang)
 
+    def sortBarang(self):
+        self.__barang.sort(key=lambda x: x.getUtility(), reverse=True)
+
     def drop(self):
         del self.__barang[-1]
     

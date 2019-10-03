@@ -23,7 +23,7 @@ for index, i in enumerate(dataKnapsack):
     knapsacks.append(Knapsack(i[0], i[1]))
 
 ndata = len(barangs)
-iterasiMax = 20
+iterasiMax = 1
 evaporasi = 0.25
 pheromone = 0.5
 tj0 = [pheromone] * ndata
@@ -67,7 +67,9 @@ for i in range(iterasiMax):
     print('sgb : %s' % (sgbVal), end='\n')
     print('-' * 90)
     if restart == sgbVal == sibVal == True:
+        print('TJ0 : ', tj0)
+        print('TJ1 : ', tj1)
         break
 
-for i in globalHst:
-    print(i.getSgb(), ' | ', i.getProfit(), ' | ', i.getIterasi())
+# for i in globalHst:
+#     print(i.getSgb(), ' | ', i.getProfit(), ' | ', i.getIterasi())
